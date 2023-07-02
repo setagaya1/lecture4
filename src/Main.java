@@ -16,7 +16,7 @@ public class Main {
 
         //中間処理 filter
         integerList.stream() //Listをstreamに変換
-                .filter( i -> i % 2 == 0) //中間処理（ラムダ式にはtrue or falseに置き換わるものをおく。trueのみ抜き出される。）
+                .filter( i -> i % 2 == 0) //中間処理（filterの処理にはtrue or falseに置き換わるものをおく。trueのみ抜き出される。）
                 .forEach(System.out :: println); //終端処理（メソッド参照）
         nameList.stream()
                 .filter( name -> name.contains("a"))
