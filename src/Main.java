@@ -5,6 +5,7 @@
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -57,15 +58,20 @@ public class Main {
         System.out.println("次の数字を昇順で並べ替えた時\"3番目\"の数字を答えてください！");
         long startTime = System.currentTimeMillis();
         System.out.println(randomList);
-        int answer = new java.util.Scanner(System.in).nextInt();
-        long finishTime = System.currentTimeMillis();
-        long clearTime = TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime);
 
-        if (answer == answerList.get(2)) {
-            System.out.println("正解です！");
-            System.out.println("クリア時間は" + clearTime + "秒でした！");
-        } else {
-            System.out.println("残念不正解です…！またチャレンジしてくださいね");
+        try {
+            int answer = new java.util.Scanner(System.in).nextInt();
+            long finishTime = System.currentTimeMillis();
+            long clearTime = TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime);
+
+            if (answer == answerList.get(2)) {
+                System.out.println("正解です！");
+                System.out.println("クリア時間は" + clearTime + "秒でした！");
+            } else {
+                System.out.println("残念不正解です…！またチャレンジしてくださいね");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("回答は半角数字にて入力してください！");
         }
     }
 }
